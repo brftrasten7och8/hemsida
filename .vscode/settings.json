@@ -1,0 +1,14 @@
+{
+	"window.title": "${dirty}BRF Trasten 7 & 8 ${separator} ${activeEditorMedium}",
+	"workbench.colorCustomizations": {
+		"titleBar.activeForeground": "#333",
+		"titleBar.inactiveForeground": "#333",
+		"titleBar.activeBackground": "#90ee90",
+		"titleBar.inactiveBackground": "#90ee90"
+	},
+	"eslint.lintTask.enable": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"vetur.validation.template": false
+}
