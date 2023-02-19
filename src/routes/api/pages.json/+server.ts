@@ -13,11 +13,11 @@ export const GET = (async () => {
 	try {
 		let result;
 		if (dev) {
-			console.log('hardcoded load');
+			// console.log('hardcoded load');
 			const { hardcoded } = await import('$lib/hardcoded');
 			result = hardcoded;
 		} else {
-			console.log('contentful load');
+			// console.log('contentful load');
 			const getStartPage = client.getEntries<any>({
 				content_type: 'page',
 				'fields.slug': '/',

@@ -4,7 +4,7 @@ import type { LayoutServerLoad } from './$types';
 
 export const load = (async ({ url }) => {
 	try {
-		console.log('fetched api');
+		// console.log('fetched api');
 		const data = await fetch(`${url.origin}/api/pages.json`);
 		const result = await data.json();
 
