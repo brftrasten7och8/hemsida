@@ -39,6 +39,7 @@
 		.nav-bar {
 			background: rgba(255, 255, 255, 0.7);
 			backdrop-filter: blur(8px);
+			-webkit-backdrop-filter: blur(8px);
 			width: 100%;
 			overflow: hidden;
 			display: block;
