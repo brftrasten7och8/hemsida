@@ -4,8 +4,8 @@ import { secret } from '$lib/secret';
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
-// import { dev } from '$app/environment';
-const dev = false;
+import { dev } from '$app/environment';
+// const dev = false;
 
 export const prerender = true;
 

@@ -103,6 +103,13 @@
 		flex-direction: column;
 		min-height: 100vh;
 	}
+
+	@supports (height: 100dvh) {
+		.memberpage {
+			min-height: 100dvh;
+		}
+	}
+
 	.memberpage article {
 		margin-top: auto;
 	}

@@ -13,6 +13,9 @@
 
 	export let data: LayoutData;
 
+	let pageScrolled = false;
+	let y = 0;
+
 	if (data.startpage) {
 		$pages = data.startpage;
 	}
@@ -25,24 +28,64 @@
 		if (current !== $isSmall) $isSmall = current;
 	}
 
+	let page = '';
+	let subPage = '';
+
 	$: if (browser) {
 		if ($isSmall && $navOpen) {
 			document.body.classList.add('noscroll');
 		} else {
 			document.body.classList.remove('noscroll');
 		}
+
+		if (window.location.pathname === '/') {
+			page = '/';
+			subPage = '';
+		} else {
+			const params = window.location.pathname.split('/');
+			page = params[1] ?? '';
+			subPage = params[2] ?? '';
+		}
+	}
+
+	$: if (y > 96) {
+		pageScrolled = true;
+	} else {
+		pageScrolled = false;
+	}
+	$: if (browser) document.body.classList.toggle('pageScrolled', pageScrolled);
+
+	let findSubpage: App.Entry | undefined;
+	let findPage: App.Entry | undefined;
+	let title: string = '';
+	$: findPage = $pages?.fields?.subpages?.find((p) => p.fields?.slug === page);
+
+	$: if (findPage && subPage) {
+		findSubpage = findPage.fields?.subpages?.find((p) => p.fields?.slug === subPage);
+	} else {
+		findSubpage = undefined;
+	}
+
+	$: if (findSubpage) {
+		title = findSubpage?.fields?.title ?? '';
+	} else if (findPage) {
+		title = findPage?.fields?.title ?? '';
+	} else {
+		title = 'Start';
 	}
 </script>
 
-<svelte:window on:resize|passive={handleResize} />
+<svelte:window on:resize|passive={handleResize} bind:scrollY={y} />
 
 <svelte:head>
-	<title>Brf Trasten 7 & 8</title>
+	<title>Brf Trasten 7 & 8 - {title}</title>
 	<meta name="description" content="Hemsida för bostadsrättsföreningen Brf Trasten 7 & 8" />
+	<meta name="format-detection" content="telephone=no" />
 </svelte:head>
 
 <div class="site-wrapper" class:navOpen={$navOpen}>
-	<MenuButton />
+	<MenuButton {title} />
+
 	<Navigation />
 	<main>
 		<slot />
@@ -56,6 +99,13 @@
 	main {
 		min-height: 100vh;
 	}
+
+	@supports (height: 100dvh) {
+		main {
+			min-height: 100dvh;
+		}
+	}
+
 	main,
 	.footer-wrapper {
 		padding-left: 300px;
