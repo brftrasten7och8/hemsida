@@ -100,12 +100,6 @@
 		min-height: 100vh;
 	}
 
-	@supports (height: 100dvh) {
-		main {
-			min-height: 100dvh;
-		}
-	}
-
 	main,
 	.footer-wrapper {
 		padding-left: 300px;

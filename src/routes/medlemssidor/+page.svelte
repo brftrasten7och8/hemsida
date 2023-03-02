@@ -104,9 +104,9 @@
 		min-height: 100vh;
 	}
 
-	@supports (height: 100dvh) {
+	@supports (height: 100svh) {
 		.memberpage {
-			min-height: 100dvh;
+			min-height: 100svh;
 		}
 	}
 

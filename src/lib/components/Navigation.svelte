@@ -143,12 +143,6 @@
 		border-right: 1px solid var(--color-border);
 	}
 
-	@supports (height: 100dvh) {
-		nav {
-			height: 100dvh;
-		}
-	}
-
 	.navigation-scroll {
 		overflow: auto;
 		height: calc(100vh - var(--nav-desktop-header-height));
@@ -156,12 +150,6 @@
 		padding-right: var(--padding-small);
 		padding-bottom: 120px;
 		transition: box-shadow var(--animation-time);
-	}
-
-	@supports (height: 100dvh) {
-		.navigation-scroll {
-			height: calc(100dvh - var(--nav-desktop-header-height));
-		}
 	}
 
 	.navigationScrolled {
@@ -260,12 +248,6 @@
 
 		.navigation-scroll {
 			height: calc(100vh - 48px);
-		}
-
-		@supports (height: 100dvh) {
-			.navigation-scroll {
-				height: calc(100dvh - 48px);
-			}
 		}
 
 		.navigation-logo-wrapper {
